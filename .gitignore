@@ -19,6 +19,8 @@ permissions/groups/00-local.yaml
 # Private skills (local only, not version controlled)
 skills/linkedin-writer/
 skills/x-writer/
+skills/drift-check/
+skills/growth-check/
 
 # Machine-specific environment (secrets, hosts, paths)
 .environment
