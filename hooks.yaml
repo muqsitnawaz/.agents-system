@@ -25,3 +25,9 @@ claude-dev-stop-gate:
   events: [Stop]
   timeout: 5
   agents: [claude]
+
+stop-completion-gate:
+  script: stop-completion-gate.sh
+  events: [Stop]
+  timeout: 10
+  agents: [claude]
