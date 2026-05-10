@@ -1,6 +1,6 @@
 # Changelog
 
-## [0.2.0] - 2026-05-10
+## [0.1.1] - 2026-05-10
 
 Public release cleanup. Streamlined commands, improved workflows, better documentation.
 
