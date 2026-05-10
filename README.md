@@ -1,6 +1,6 @@
 # .agents-system
 
-> The **system repo** for [agents-cli](https://www.npmjs.com/package/@swarmify/agents-cli) — defines the system-level, core, built-in skills, commands, hooks, rules, and permissions that ship with the tool.
+> The **system repo** for [agents-cli](https://www.npmjs.com/package/@swarmify/agents-cli) — npm-shipped defaults for commands, skills, hooks, rules, and permissions.
 
 <p align="center">
   <img src=".assets/claude.png" height="60" alt="Claude" style="margin: 0 10px;">
@@ -10,126 +10,99 @@
 
 ## What this is
 
-`agents-cli` is layered. There are two repos with the same shape but different roles:
+`agents-cli` uses layered configuration. Three repos with the same shape but different roles:
 
-| Repo | Role | Owner | Edited by |
-|---|---|---|---|
-| `~/.agents-system/` (this one) | **System** — core/built-in resources shipped and curated by `agents-cli`. The defaults every install gets. | Maintainers | Upstream PRs |
-| `~/.agents/` | **User** — your personal additions and overrides. | You | You, synced via `agents push`/`pull` |
+| Repo | Role | Edited by |
+|---|---|---|
+| `<project>/.agents/` | **Project** — repo-specific overrides | Project maintainers |
+| `~/.agents/` | **User** — your personal additions and overrides | You |
+| `~/.agents-system/` (this one) | **System** — npm-shipped defaults | Upstream PRs |
 
-Resources resolve in this order at sync time: **project > user > system**. So anything you put in `~/.agents/commands/foo.md` overrides `~/.agents-system/commands/foo.md`, and a project-local `agents.yaml` overrides both.
-
-`agents-cli` clones this repo to `~/.agents-system/` and symlinks the resolved resources into each agent's home (`~/.claude/`, `~/.codex/`, `~/.gemini/`, etc.).
+Resources resolve **project > user > system**. Same-named resource at a higher layer wins, everything else unions.
 
 ## Quick start
 
 ```bash
 npm install -g @swarmify/agents-cli
-agents pull          # clones this repo to ~/.agents-system on first run
 agents view          # show what's installed
-```
-
-To use your own fork, set the upstream and re-pull:
-
-```bash
-agents repo add gh:your-handle/.agents-system
-agents pull
 ```
 
 ## What's tracked
 
 ```
 .agents-system/
-  commands/        # slash commands  (/debug, /plan, /audit, ...)
-  skills/          # persistent capabilities (agents-cli, browser, teams, ...)
-  rules/           # AGENTS.md + reusable rule fragments and presets
-  hooks/           # prompt preprocessing + lifecycle scripts (+ hooks.yaml)
-  permissions/     # permission groups + presets for sandboxed execution
-  hooks/promptcuts.yaml  # shortcut tokens expanded inline by hooks (system defaults)
-  .githooks/       # pre-commit validation
+  commands/        # slash commands (/plan, /debug, /done, ...)
+  skills/          # capabilities (agents-cli, browser, teams, ...)
+  hooks/           # lifecycle scripts + hooks.yaml manifest
+  rules/           # AGENTS.md + modular rule fragments
+  permissions/     # permission groups + presets
 ```
 
-Each directory has its own README explaining what lives there.
-
-## Local-only (gitignored)
-
-`agents-cli` writes a lot of state into `~/.agents-system/` that should never be committed. The `.gitignore` excludes:
-
-- `agents.yaml`, `meta.yaml`, `config.json`, `aliases.json`, `prompts.json` — local state
-- `versions/`, `shims/`, `repos/`, `packages/`, `agents/` — installed CLIs and resolvers
-- `sessions/`, `cron/`, `jobs/`, `runs/`, `routines/`, `swarm/`, `swarmify/`, `cloud/`, `ledger/`, `teams/`, `drive/`, `drives/`, `cache/`, `backups/`, `logs/` — runtime state
-- `secrets/`, `.environment` — machine-specific credentials and host info
-- Private skills (whatever paths your fork's `.gitignore` lists)
-- `*.log`, `*.pid`, OS files (`.DS_Store`)
-
-Anything not in those buckets is tracked and synced.
+Each directory has its own README.
 
 ## Commands
 
-Slash commands are prompt templates. `commands/<name>.md` becomes `/<name>`, with `$ARGUMENTS` replaced by whatever the user typed after the slash. See `commands/README.md` for the full list and authoring guide.
-
-### Single-agent
+Slash commands are prompt templates. `commands/<name>.md` becomes `/<name>`.
 
 | Command | Purpose |
 |---------|---------|
-| `/plan` | Plan a feature with mockups, diagrams, evidence before code |
+| `/plan` | Plan with research, code reading, artifacts, optional team review |
 | `/debug` | Root-cause analysis with full evidence chain |
-| `/design` / `/redesign` | UX design with ASCII mockups; before/after for existing screens |
-| `/product` | User-value framing over technical elegance |
-| `/recap` | Summarize state — facts first, hypotheses grounded |
+| `/done` | Verify work is complete, test, release, create tickets for remaining |
+| `/audit` | Multi-perspective security audit using agent teams |
 | `/clean` | Remove tech debt, consolidate duplicates |
-| `/test` | Test critical paths — parallel validation for complex scopes |
-| `/continue` | Resume previous work with context recovery |
+| `/test` | Test critical paths with parallel validation |
+| `/recap` | Summarize state — facts first, hypotheses grounded |
 | `/commit` | Stage, conventional commit, push in background |
-| `/spawn` | Single subagent with full context |
-| `/audit` | Multi-perspective security audit |
-| `/issues` | Work with the project's issue tracker (Linear, GitHub Issues, Jira, etc.) |
-| `/secrets` | Manage named bundles of environment variables (Keychain-backed) |
-| `/sessions` | Search and browse agent conversation transcripts |
-| `/teams` | Arrange agents into teams for parallel execution |
+| `/continue` | Resume previous session with context recovery |
+| `/issues` | Work with issue tracker (auto-detects Linear/GitHub/Jira) |
+| `/teams` | Spawn parallel agents for a task |
 
-### Team augmentation
+Several commands use `agents teams` for complex scopes (audit, debug, plan, clean, test, recap).
 
-Several commands automatically use `agents teams` when the scope is complex:
+## Skills
 
-- `/debug` — Verifies root cause with independent teammates for multi-service bugs
-- `/plan` — Validates approach with independent planners for large features
-- `/clean` — Parallelizes scanning across areas for large codebases
-- `/test` — Distributes testing across areas for complex scopes
-- `/recap` — Spawns teams for actionable items instead of listing them
-- `/audit` — Always uses teams; each teammate plays a different threat perspective
+Skills are richer than commands — multi-file capabilities with persistent context.
 
-Run `agents teams --help` for team management commands.
+| Skill | Purpose |
+|-------|---------|
+| `agents-cli` | Manage agent CLIs, versions, config |
+| `browser` | Drive browsers for automation |
+| `teams` | Organize agents into parallel teams |
+| `mcporter` | Configure and call MCP servers |
+
+Invoke with `/skillname` or let Claude invoke when relevant.
 
 ## Rules
 
-`rules/AGENTS.md` is the canonical instruction file. `agents-cli` syncs it as `CLAUDE.md`, `GEMINI.md`, `.cursorrules`, or `AGENTS.md` per agent. `rules/presets/` and `rules/default/` hold modular fragments for `@import`-style composition. See `rules/README.md`.
+`rules/AGENTS.md` is the canonical instruction file. Synced as `CLAUDE.md`, `GEMINI.md`, `.cursorrules` per agent. Modular fragments in `rules/subrules/` for composition.
 
 ## Hooks
 
-`hooks.yaml` registers scripts in `hooks/` against agent lifecycle events (`SessionStart`, `UserPromptSubmit`, etc.). The two most visible hooks expand `#shortcut` tokens (via `hooks/promptcuts.yaml`) and execute inline `` `! cmd` `` bang commands. The user repo can override or disable any system-shipped hook by adding the same key to `~/.agents/hooks.yaml` — `enabled: false` disables it entirely. See `hooks/README.md`.
+`hooks.yaml` registers scripts against agent lifecycle events (`SessionStart`, `UserPromptSubmit`, `Stop`). Key hooks:
+- Expand `#shortcut` tokens via `promptcuts.yaml`
+- Execute inline `! cmd` bang commands
+- Inject context at session start
 
-## Project-level version pinning
+User overrides go in `~/.agents/agents.yaml` under the `hooks:` section.
 
-Pin agent CLI versions per project with an `agents.yaml` at the repo root:
+## Local-only (gitignored)
 
-```yaml
-agents:
-  claude: 2.1.118
-  codex: 0.98.0
-```
-
-Shims in `~/.agents-system/shims/` walk up from the cwd, resolve the version, and exec the right binary. Falls back to the user default in `~/.agents/agents.yaml`.
+Runtime state written to this directory but never committed:
+- `versions/`, `shims/` — installed CLIs
+- `sessions/`, `teams/`, `swarm/` — execution state
+- `agents.yaml`, `*.log`, `*.pid` — local config and logs
 
 ## Customization
 
-Fork, edit, push, pull on the next machine:
+Fork this repo, make changes, set as upstream:
 
 ```bash
-vim ~/.agents-system/commands/debug.md
-cd ~/.agents-system && git commit -am "customize debug" && git push
-agents pull   # on the other machine
+agents repo set gh:your-handle/.agents-system
+agents pull
 ```
+
+Or just add overrides to `~/.agents/` — same structure, user layer wins.
 
 ## License
 

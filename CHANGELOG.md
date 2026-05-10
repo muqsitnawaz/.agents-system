@@ -1,5 +1,25 @@
 # Changelog
 
+## [0.2.0] - 2026-05-10
+
+Public release cleanup. Streamlined commands, improved workflows, better documentation.
+
+### Added
+- **`/done` command** — comprehensive completion checklist: verify code, test E2E, commit, create PR with session gist, release if applicable, handle remaining items via tickets.
+- **`/teams` command** — inline workflow for spawning parallel agents (single agent via `agents run`, teams via `agents teams`).
+- **`/plan` enhancements** — web search for current best practices, user flows for UI features, primitive reuse requirement, optional early design review with agent team.
+
+### Changed
+- **Commands consolidated** — removed redundant skill redirects (`/secrets`, `/sessions`, `/teams` stubs) in favor of invoking skills directly.
+- **`/spawn` removed** — use `agents run <agent> "prompt" --mode edit` for single-agent dispatch.
+- **`/design`, `/redesign` removed** — covered by the `design` skill with multiple modes.
+- **`/product` moved to rules** — now `rules/subrules/product-mindset.md` (opt-in, not in default preset).
+- **Teams skill updated** — documents `agents run` for single-agent work.
+- **README rewritten** — accurate command/skill tables, cleaner structure.
+
+### Fixed
+- Hooks documentation clarified: system uses `hooks.yaml`, user hooks go in `agents.yaml` under `hooks:` section.
+
 ## [0.1.0] - 2026-04-01
 
 First tagged release. Consolidates agent configuration, permissions, hooks, and skills.
