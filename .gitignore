@@ -32,7 +32,6 @@ permissions/default.yml
 *.pid
 .update-check
 meta.yaml
-agents.yaml
 cache.json
 config.json
 prompts.json

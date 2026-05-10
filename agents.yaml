@@ -1,0 +1,27 @@
+# agents-cli system defaults
+# User overrides go in ~/.agents/agents.yaml
+
+hooks:
+  linear-tasks:
+    script: 03-linear-inject-tasks-context.sh
+    events: [SessionStart]
+    timeout: 15
+    agents: [claude]
+
+  expand-promptcuts:
+    script: 02-expand-prompt-user-shortcuts.sh
+    events: [UserPromptSubmit]
+    timeout: 5
+    agents: [claude, codex, gemini]
+
+  expand-bang-commands:
+    script: 02-expand-prompt-bang-commands.py
+    events: [UserPromptSubmit]
+    timeout: 10
+    agents: [claude, codex, gemini]
+
+  stop-completion-gate:
+    script: 00-agent-verify-work-complete.sh
+    events: [Stop]
+    timeout: 10
+    agents: [claude]
