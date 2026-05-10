@@ -1,0 +1,20 @@
+# agents-cli rules — single default preset
+#
+# Includes all subrules from `<repo>/rules/subrules/`.
+
+presets:
+  default:
+    subrules:
+      - core-hard-lines
+      - workflow-proactive
+      - code-quality
+      - testing-strict
+      - git-readonly
+      - git-workflow
+      - operational
+      - conventions
+      - agents-cli
+      - linear-tickets
+      - parallel-teams
+      - scripts-discipline
+      - tech-stack

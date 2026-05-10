@@ -1,1 +1,12 @@
-  # Covered by blanket "Bash" in 30-paths.yaml
+  # CI / build orchestration.
+  - "Bash(make:*)"
+  - "Bash(just:*)"
+  - "Bash(task:*)"
+  - "Bash(gradle:*)"
+  - "Bash(gradlew:*)"
+  - "Bash(./gradlew:*)"
+  - "Bash(mvn:*)"
+  - "Bash(bazel:*)"
+  - "Bash(buck:*)"
+  - "Bash(buck2:*)"
+  - "Bash(act:*)"

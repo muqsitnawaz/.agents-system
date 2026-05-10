@@ -13,8 +13,16 @@ if [ ! -d "$GROUPS_DIR" ]; then
   exit 1
 fi
 
-# Concatenate all group files in order
-cat "$GROUPS_DIR"/*.yaml > "$OUTPUT"
+# Concatenate all group files in order, excluding gitignored local overrides.
+# 00-local.yaml is a per-machine layer; its contents must never end up in the
+# built default.yaml that gets committed to the public repo.
+> "$OUTPUT"
+for f in "$GROUPS_DIR"/*.yaml; do
+  case "$(basename "$f" .yaml)" in
+    00-local) continue ;;
+  esac
+  cat "$f" >> "$OUTPUT"
+done
 
 # Count entries
 ALLOW_COUNT=$(grep -c '^\s*-\s*"' "$OUTPUT" 2>/dev/null || echo 0)

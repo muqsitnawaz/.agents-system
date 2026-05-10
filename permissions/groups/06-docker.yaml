@@ -1,1 +1,7 @@
-  # Covered by blanket "Bash" in 30-paths.yaml
+  # Docker / container runtime — read-only and build/run.
+  # Privileged operations (e.g. `docker system prune -af`) fall through to prompt.
+  - "Bash(docker:*)"
+  - "Bash(docker-compose:*)"
+  - "Bash(podman:*)"
+  - "Bash(colima:*)"
+  - "Bash(buildx:*)"

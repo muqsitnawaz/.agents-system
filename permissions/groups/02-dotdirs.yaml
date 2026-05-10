@@ -1,1 +1,12 @@
-  # Covered by blanket "Bash" in 30-paths.yaml
+  # agents-cli, claude-code, gh, op, etc. — read-only inspection of common dotdirs.
+  - "Bash(agents:*)"
+  - "Bash(ag:*)"
+  - "Bash(claude:*)"
+  - "Bash(codex:*)"
+  - "Bash(gemini:*)"
+  - "Bash(cursor-agent:*)"
+  - "Bash(opencode:*)"
+  - "Bash(gh:*)"
+  - "Bash(op:*)"
+  - "Bash(security:*)"
+  - "Bash(open:*)"

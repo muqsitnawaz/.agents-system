@@ -5,7 +5,6 @@
   - "WebFetch(domain:api.flutter.dev)"
   - "WebFetch(domain:api.github.com)"
   - "WebFetch(domain:api.openai.com)"
-  - "WebFetch(domain:api.prix.dev)"
   - "WebFetch(domain:api.slack.com)"
   - "WebFetch(domain:api.together.xyz)"
   - "WebFetch(domain:api.video)"

@@ -1,5 +1,5 @@
 deny:
-  # Sandbox-only deny list. Applied when AGENTS_PERMISSION_SET=sandbox.
+  # Sandbox-only deny list. Applied when AGENTS_PERMISSION_PRESET=sandbox.
   #
   # Philosophy: the pod is ephemeral and non-root. Only block operations whose
   # blast radius escapes the pod (remote git state, credentials that unlock

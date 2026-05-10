@@ -26,7 +26,7 @@ The most underused capability. Every conversation you (and other agents) have ha
 
 **You can check what's running right now.** `--active` shows live sessions across terminals, teams, cloud, and headless agents. Use this before spawning duplicate work.
 
-**You can read cloud-run sessions.** Sessions from Rush Cloud (Factory Floor) are also queryable via `--cloud`.
+**You can read cloud-run sessions.** Sessions from cloud providers are also queryable via `--cloud`.
 
 The key insight: sessions are your memory. Before starting a task, search for prior sessions on the same topic or repo. Before spawning a subagent, check if one is already active.
 
@@ -49,7 +49,7 @@ Use teams when a task has independent parallel workstreams (backend + frontend) 
 
 ## Cloud Dispatch
 
-`agents cloud run` dispatches a task to a remote cloud agent (Rush Cloud, Codex Cloud, or Factory). The task runs against a GitHub repo and branch. You can follow logs live, send follow-up messages, or cancel.
+`agents cloud run` dispatches a task to a remote cloud agent. The task runs against a GitHub repo and branch. You can follow logs live, send follow-up messages, or cancel.
 
 Use cloud dispatch when the task is too long-running for a local session, needs a clean environment, or should produce a PR.
 

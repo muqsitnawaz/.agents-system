@@ -164,10 +164,9 @@ shortcuts:
 
     MANDATORY SKILLS — load these in PARALLEL before anything else:
     - `design` — the project's canonical design workflow (ASCII mockups, interactions, components, Mac feel, Phase 0-7 process).
-    - `rtaste` AND `rush-taste` — visual language, interaction patterns, curated exemplar references.
-          - `intuitive-design` — anticipate the user's next action, surface info at point-of-need, reduce friction.
-          - `brand` — typography, color, voice for your core properties.
-          Skipping any of these = designing without the project's accumulated taste = wasted draft.
+    - `intuitive-design` — anticipate the user's next action, surface info at point-of-need, reduce friction.
+    - `brand` — typography, color, voice for your core properties.
+    Skipping any of these = designing without the project's accumulated taste = wasted draft.
     ---------------- PHASE 0: FEELING (BEFORE ANY MOCKUP) ----------------
     Answer these in writing. Every later decision must be justifiable against them.
 
@@ -274,11 +273,9 @@ shortcuts:
        Be specific — "it's a code question" is not a diagnosis.
 
           b) SCAN AVAILABLE SKILLS. The system-reminder in this session
-             lists every skill available (e.g. debug, linear,
-             rush-product-knowledge, mq, writer, plan, rdev, rush-cli,
-             hermes, yosemite, openclaw, agents-cli, claude-api,
-             creative-analysis, brain-scan, image-craft, browser,
-             redesign, and more).
+             lists every skill available (e.g. debug, linear, mq, writer,
+             plan, agents-cli, claude-api, creative-analysis, brain-scan,
+             image-craft, browser, redesign, and more).
              Read the one-line trigger descriptions. These are not       decorative — they exist because the user got burned doing
        the task without domain knowledge.
 

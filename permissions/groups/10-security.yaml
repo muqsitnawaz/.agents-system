@@ -1,1 +1,11 @@
-  # Covered by blanket "Bash" in 30-paths.yaml
+  # Security tooling — SSH client, GPG, SSL inspection (read-only).
+  - "Bash(ssh:*)"
+  - "Bash(scp:*)"
+  - "Bash(rsync:*)"
+  - "Bash(gpg:*)"
+  - "Bash(ssh-keygen:*)"
+  - "Bash(ssh-add:*)"
+  - "Bash(ssh-keyscan:*)"
+  - "Bash(openssl:*)"
+  - "Bash(certutil:*)"
+  - "Bash(keytool:*)"

@@ -1,8 +1,11 @@
-  # Blanket tool allows — deny list still blocks dangerous commands
-  - "Bash"
+  # Read is allow-listed broadly so agents can inspect any file in the project,
+  # including dotfiles and config. Credential paths (~/.ssh, ~/.aws/credentials,
+  # ~/.config/gcloud, ~/.netrc, ~/.pgpass, ~/.docker/config.json, ~/.npmrc) are
+  # explicitly denied in 99-deny.yaml.
   - "Read"
 
-  # File system paths (Write/Edit)
+  # Write/Edit is scoped: scratch space + the agents-cli config dirs.
+  # Project-level edits (cwd) require explicit user approval.
   - "Write(/tmp/*)"
   - "Write(/tmp/**)"
   - "Edit(/tmp/*)"
@@ -12,10 +15,6 @@
   - "Write(~/.claude/**)"
   - "Edit(~/.claude/*)"
   - "Edit(~/.claude/**)"
-  - "Write(~/.rush/*)"
-  - "Write(~/.rush/**)"
-  - "Edit(~/.rush/*)"
-  - "Edit(~/.rush/**)"
   - "Write(~/.agents/*)"
   - "Write(~/.agents/**)"
   - "Edit(~/.agents/*)"

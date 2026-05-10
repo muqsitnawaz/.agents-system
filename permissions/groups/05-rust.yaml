@@ -1,1 +1,6 @@
-  # Covered by blanket "Bash" in 30-paths.yaml
+  # Rust toolchain.
+  - "Bash(cargo:*)"
+  - "Bash(rustc:*)"
+  - "Bash(rustup:*)"
+  - "Bash(rustfmt:*)"
+  - "Bash(clippy-driver:*)"

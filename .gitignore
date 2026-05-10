@@ -1,47 +1,37 @@
 # Local-only directories (not synced to repo)
-sessions/
-versions/
-shims/
-repos/
-runs/
-routines/
-drives/
-packages/
-swarm/
-agents/
-backups/
-growth/
-logs/
-factory/
-ledger/
+/sessions/
+/versions/
+/shims/
+/repos/
+/runs/
+/routines/
+/drives/
+/packages/
+/swarm/
+/agents/
+/backups/
+/growth/
+/logs/
+/factory/
+/ledger/
 
 # Local-only permissions (machine-specific, not synced)
 permissions/groups/00-local.yaml
 permissions/default.yml
 
 # Private skills (local only, not version controlled)
-skills/linkedin-writer/
-skills/x-writer/
-skills/drift-check/
-skills/growth-check/
-skills/dispatch/
-skills/proof-loop/
-skills/rush-agent-builder/
-skills/rush-analytics/
-skills/rush-product-knowledge/
-skills/rush-taste/
-skills/rush-writer/
+# Add your own private skill paths here in forks:
+#   skills/your-private-skill/
 
 # Machine-specific environment (secrets, hosts, paths)
-.environment
-secrets
+/.environment
+/secrets
 
 # Local state files
 *.log
 *.pid
 .update-check
 meta.yaml
-agents.yaml
 cache.json
 config.json
 prompts.json
@@ -70,11 +60,16 @@ linear.json
 # Runtime state, caches, and live process tracking
 /.cli-version-cache.json
 /.models-cache.json
+/.migrated
 /rotate-stamp-*.json
 /bin/
+/browser/
 /cache/
 /cloud/
 /drive/
+/helpers/
+/state/
+/subagents/
 /swarmify/
 /teams/
 

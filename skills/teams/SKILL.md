@@ -1,14 +1,19 @@
 ---
 name: teams
-description: "Organize AI coding agents into teams that collaborate on a shared task. Create teams, add teammates, start them, monitor progress, and collect results. Use this skill when you need parallel agent execution."
+description: "Organize AI coding agents into teams that collaborate on a shared task. Create teams, add teammates, start them, monitor progress, and collect results. Use this skill when you need parallel agent execution. For single-agent dispatch, use `agents run` instead."
 argument-hint: "[create|add|start|status|disband]"
-allowed-tools: Bash(agents teams*)
+allowed-tools: Bash(agents teams*), Bash(agents run*)
 user-invocable: true
 ---
 
 # Teams Skill
 
 Organize AI coding agents into teams for parallel collaboration. This skill teaches you how to use the `agents teams` CLI.
+
+## Single Agent vs Teams
+
+- **Single agent**: Use `agents run <agent> "prompt" --mode edit` for one-off tasks
+- **Multiple agents**: Use `agents teams` when you need parallel execution
 
 ## Quick Start
 

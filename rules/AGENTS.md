@@ -86,10 +86,9 @@ Rules are ordered by impact. #1 is the most violated and most costly.
 19. **NO ENV VARS FOR USER CREDENTIALS** - Use Keychain, encrypted config.
 20. **GIT: READ-ONLY + COMMIT/PUSH ONLY** - Allowed: `status`, `diff`, `log`, `show`, `remote`, `ls-files`, `cat-file`, `rev-parse`, `describe`, `shortlog`, `blame`, `tag`, `check-ignore`, `config --get`, `ls-tree`, `add`, `commit`, `push`, `clone`. Everything else denied — no `checkout`, `branch`, `stash`, `reset`, `rebase`, `cherry-pick`, `revert`, `merge --abort`, `clean`, `reflog`, `filter-branch`, `gc`, `prune`, `fsck`, `config` (write), or force push.
 21. **NO LOCALLY BUILT CLIS** - Use install scripts then run globally.
-22. **USE `rush http` FOR API CALLS** - Never curl with manual tokens for api.prix.dev.
-23. **NO BACKGROUND SHELLS** - Foreground only.
-24. **NO TOASTS** - Silent success, inline errors.
-25. **NO SUMMARY FILES / NO STANDALONE .md FILES** - Tell user verbally. Don't create README, docs, or summary files unless explicitly asked.
+22. **NO BACKGROUND SHELLS** - Foreground only.
+23. **NO TOASTS** - Silent success, inline errors.
+24. **NO SUMMARY FILES / NO STANDALONE .md FILES** - Tell user verbally. Don't create README, docs, or summary files unless explicitly asked.
 
 ---
 
@@ -136,7 +135,6 @@ Use the right tool for the job. Run `<tool> --help` for full usage.
 | Task | Tool | When |
 | --- | --- | --- |
 | Query large docs (.md, .html, .pdf) | `mq` | File is 100+ lines. Probe structure first, extract surgically. |
-| Authenticated API calls | `rush http` | Any call to api.prix.dev. Auto-injects session tokens. |
 | Linear task management | `linear` skill | Querying work queues, updating status, managing sprints. |
 | Browser automation | `browser` skill | Driving websites, filling forms, taking screenshots. |
 | Image generation | `image-craft` skill | Any visual asset — photos, logos, posters, product shots. |
@@ -153,18 +151,6 @@ sleep 1 && agents pty screen $SID    # see the screen (clean text, no ANSI)
 agents pty write $SID "exit()\n"     # send keystrokes
 agents pty stop $SID                 # clean up
 ```
-
-### Tech Stack
-
-- Frontend: Node v24, Next.js, Bun, React, Tailwind, zustand, lucide-react
-- Backend: Python 3.12, FastAPI, uv, pydantic, loguru, Supabase/Postgres
-
-### Defaults
-
-- Package manager: bun
-- TypeScript only
-- Python: loguru, built-in type hints
-- Env files: .env.dev and .env.prod
 
 ### Agent Spawning
 

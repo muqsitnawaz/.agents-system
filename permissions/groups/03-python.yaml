@@ -1,1 +1,15 @@
-  # Covered by blanket "Bash" in 30-paths.yaml
+  # Python — interpreters, package managers, formatters, test runners.
+  - "Bash(python:*)"
+  - "Bash(python3:*)"
+  - "Bash(pip:*)"
+  - "Bash(pip3:*)"
+  - "Bash(uv:*)"
+  - "Bash(uvx:*)"
+  - "Bash(pipx:*)"
+  - "Bash(poetry:*)"
+  - "Bash(pytest:*)"
+  - "Bash(ruff:*)"
+  - "Bash(mypy:*)"
+  - "Bash(black:*)"
+  - "Bash(isort:*)"
+  - "Bash(pyright:*)"

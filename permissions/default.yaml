@@ -3,27 +3,222 @@
 name: default
 description: Default development permissions for Claude Code
 allow:
-  # Local machine-specific permissions (gitignored -- not checked into repo)
-  # Add paths, tools, or commands specific to YOUR machine here.
-  # See permissions/AGENTS.md for guidance.
-  # Covered by blanket "Bash" in 30-paths.yaml
-  # Covered by blanket "Bash" in 30-paths.yaml
-  # Covered by blanket "Bash" in 30-paths.yaml
-  # Covered by blanket "Bash" in 30-paths.yaml
-  # Covered by blanket "Bash" in 30-paths.yaml
-  # Covered by blanket "Bash" in 30-paths.yaml
-  # Covered by blanket "Bash" in 30-paths.yaml
-  # Covered by blanket "Bash" in 30-paths.yaml
-  # Covered by blanket "Bash" in 30-paths.yaml
-  # Covered by blanket "Bash" in 30-paths.yaml
-  # Covered by blanket "Bash" in 30-paths.yaml
-  # Covered by blanket "Bash" in 30-paths.yaml
-  # Covered by blanket "Bash" in 30-paths.yaml
-  # MCP server tools
-  - "mcp__Swarm__Spawn"
-  - "mcp__Swarm__Status"
-  - "mcp__Swarm__Stop"
-  - "mcp__Swarm__Tasks"
+  # Core shell — read-only filesystem inspection and text utilities.
+  # Anything that modifies the filesystem (rm, mv, cp, mkdir, chmod, ln, touch)
+  # falls through to a user prompt by design.
+  - "Bash(ls:*)"
+  - "Bash(cat:*)"
+  - "Bash(head:*)"
+  - "Bash(tail:*)"
+  - "Bash(less:*)"
+  - "Bash(more:*)"
+  - "Bash(grep:*)"
+  - "Bash(rg:*)"
+  - "Bash(fd:*)"
+  - "Bash(tree:*)"
+  - "Bash(file:*)"
+  - "Bash(wc:*)"
+  - "Bash(sort:*)"
+  - "Bash(uniq:*)"
+  - "Bash(awk:*)"
+  - "Bash(sed:*)"
+  - "Bash(cut:*)"
+  - "Bash(tr:*)"
+  - "Bash(jq:*)"
+  - "Bash(yq:*)"
+  - "Bash(echo:*)"
+  - "Bash(printf:*)"
+  - "Bash(date:*)"
+  - "Bash(env)"
+  - "Bash(which:*)"
+  - "Bash(type:*)"
+  - "Bash(true)"
+  - "Bash(false)"
+  - "Bash(test:*)"
+  - "Bash(expr:*)"
+  - "Bash(basename:*)"
+  - "Bash(dirname:*)"
+  - "Bash(realpath:*)"
+  - "Bash(readlink:*)"
+  - "Bash(stat:*)"
+  - "Bash(du:*)"
+  - "Bash(df:*)"
+  - "Bash(pwd)"
+  - "Bash(uname:*)"
+  - "Bash(hostname)"
+  - "Bash(whoami)"
+  - "Bash(id)"
+  # agents-cli, claude-code, gh, op, etc. — read-only inspection of common dotdirs.
+  - "Bash(agents:*)"
+  - "Bash(ag:*)"
+  - "Bash(claude:*)"
+  - "Bash(codex:*)"
+  - "Bash(gemini:*)"
+  - "Bash(cursor-agent:*)"
+  - "Bash(opencode:*)"
+  - "Bash(gh:*)"
+  - "Bash(op:*)"
+  - "Bash(security:*)"
+  - "Bash(open:*)"
+  # JavaScript / TypeScript — runtimes, package managers, build tooling.
+  - "Bash(node:*)"
+  - "Bash(npm:*)"
+  - "Bash(npx:*)"
+  - "Bash(bun:*)"
+  - "Bash(bunx:*)"
+  - "Bash(pnpm:*)"
+  - "Bash(pnpx:*)"
+  - "Bash(yarn:*)"
+  - "Bash(deno:*)"
+  - "Bash(tsx:*)"
+  - "Bash(tsc:*)"
+  - "Bash(eslint:*)"
+  - "Bash(prettier:*)"
+  - "Bash(vite:*)"
+  - "Bash(next:*)"
+  - "Bash(vitest:*)"
+  - "Bash(jest:*)"
+  - "Bash(playwright:*)"
+  # Python — interpreters, package managers, formatters, test runners.
+  - "Bash(python:*)"
+  - "Bash(python3:*)"
+  - "Bash(pip:*)"
+  - "Bash(pip3:*)"
+  - "Bash(uv:*)"
+  - "Bash(uvx:*)"
+  - "Bash(pipx:*)"
+  - "Bash(poetry:*)"
+  - "Bash(pytest:*)"
+  - "Bash(ruff:*)"
+  - "Bash(mypy:*)"
+  - "Bash(black:*)"
+  - "Bash(isort:*)"
+  - "Bash(pyright:*)"
+  # Go toolchain.
+  - "Bash(go:*)"
+  - "Bash(gofmt:*)"
+  - "Bash(goimports:*)"
+  - "Bash(golangci-lint:*)"
+  - "Bash(staticcheck:*)"
+  # Rust toolchain.
+  - "Bash(cargo:*)"
+  - "Bash(rustc:*)"
+  - "Bash(rustup:*)"
+  - "Bash(rustfmt:*)"
+  - "Bash(clippy-driver:*)"
+  # Docker / container runtime — read-only and build/run.
+  # Privileged operations (e.g. `docker system prune -af`) fall through to prompt.
+  - "Bash(docker:*)"
+  - "Bash(docker-compose:*)"
+  - "Bash(podman:*)"
+  - "Bash(colima:*)"
+  - "Bash(buildx:*)"
+  # Kubernetes / Helm.
+  - "Bash(kubectl:*)"
+  - "Bash(kustomize:*)"
+  - "Bash(helm:*)"
+  - "Bash(k9s:*)"
+  - "Bash(stern:*)"
+  # Cloud provider CLIs.
+  - "Bash(aws:*)"
+  - "Bash(gcloud:*)"
+  - "Bash(az:*)"
+  - "Bash(doctl:*)"
+  - "Bash(fly:*)"
+  - "Bash(flyctl:*)"
+  - "Bash(vercel:*)"
+  - "Bash(netlify:*)"
+  - "Bash(supabase:*)"
+  - "Bash(wrangler:*)"
+  - "Bash(railway:*)"
+  - "Bash(render:*)"
+  - "Bash(heroku:*)"
+  - "Bash(terraform:*)"
+  - "Bash(pulumi:*)"
+  # Git — read-only + commit/push/clone/fetch/pull.
+  # Destructive operations (reset, checkout, branch, stash, rebase, cherry-pick,
+  # revert, clean, reflog, filter-branch, gc, prune, fsck, force-push) are denied
+  # in 99-deny.yaml.
+  - "Bash(git status:*)"
+  - "Bash(git diff:*)"
+  - "Bash(git log:*)"
+  - "Bash(git show:*)"
+  - "Bash(git remote:*)"
+  - "Bash(git ls-files:*)"
+  - "Bash(git cat-file:*)"
+  - "Bash(git rev-parse:*)"
+  - "Bash(git describe:*)"
+  - "Bash(git shortlog:*)"
+  - "Bash(git blame:*)"
+  - "Bash(git tag:*)"
+  - "Bash(git check-ignore:*)"
+  - "Bash(git ls-tree:*)"
+  - "Bash(git add:*)"
+  - "Bash(git commit:*)"
+  - "Bash(git push:*)"
+  - "Bash(git clone:*)"
+  - "Bash(git fetch:*)"
+  - "Bash(git pull:*)"
+  - "Bash(git rm:*)"
+  - "Bash(git mv:*)"
+  - "Bash(git restore:*)"
+  - "Bash(git diff-tree:*)"
+  - "Bash(git for-each-ref:*)"
+  - "Bash(git symbolic-ref:*)"
+  # Security tooling — SSH client, GPG, SSL inspection (read-only).
+  - "Bash(ssh:*)"
+  - "Bash(scp:*)"
+  - "Bash(rsync:*)"
+  - "Bash(gpg:*)"
+  - "Bash(ssh-keygen:*)"
+  - "Bash(ssh-add:*)"
+  - "Bash(ssh-keyscan:*)"
+  - "Bash(openssl:*)"
+  - "Bash(certutil:*)"
+  - "Bash(keytool:*)"
+  # CI / build orchestration.
+  - "Bash(make:*)"
+  - "Bash(just:*)"
+  - "Bash(task:*)"
+  - "Bash(gradle:*)"
+  - "Bash(gradlew:*)"
+  - "Bash(./gradlew:*)"
+  - "Bash(mvn:*)"
+  - "Bash(bazel:*)"
+  - "Bash(buck:*)"
+  - "Bash(buck2:*)"
+  - "Bash(act:*)"
+  # Networking, archives, profiling — generally safe day-to-day commands.
+  # rm, mv, cp, chmod, chown, ln, mkdir, touch are deliberately not auto-approved
+  # so they fall through to a user prompt.
+  - "Bash(curl:*)"
+  - "Bash(wget:*)"
+  - "Bash(http:*)"
+  - "Bash(httpie:*)"
+  - "Bash(find:*)"
+  - "Bash(ping:*)"
+  - "Bash(dig:*)"
+  - "Bash(host:*)"
+  - "Bash(nslookup:*)"
+  - "Bash(traceroute:*)"
+  - "Bash(netstat:*)"
+  - "Bash(lsof:*)"
+  - "Bash(ps:*)"
+  - "Bash(top:*)"
+  - "Bash(htop:*)"
+  - "Bash(time:*)"
+  - "Bash(tar:*)"
+  - "Bash(zip:*)"
+  - "Bash(unzip:*)"
+  - "Bash(gzip:*)"
+  - "Bash(gunzip:*)"
+  - "Bash(diff:*)"
+  - "Bash(comm:*)"
+  - "Bash(tee:*)"
+  - "Bash(xargs:*)"
+  - "Bash(sleep:*)"
+  - "Bash(brew:*)"
+  - "Bash(direnv:*)"
   # WebFetch - Developer documentation and tools
   - "WebSearch"
   - "WebFetch(domain:anthropic.com)"
@@ -31,7 +226,6 @@ allow:
   - "WebFetch(domain:api.flutter.dev)"
   - "WebFetch(domain:api.github.com)"
   - "WebFetch(domain:api.openai.com)"
-  - "WebFetch(domain:api.prix.dev)"
   - "WebFetch(domain:api.slack.com)"
   - "WebFetch(domain:api.together.xyz)"
   - "WebFetch(domain:api.video)"
@@ -957,7 +1151,6 @@ allow:
   - "WebFetch(domain:hackerone.com)"
   - "WebFetch(domain:hackerrank.com)"
   - "WebFetch(domain:hackingwithswift.com)"
-  - "WebFetch(domain:halo.prix.dev)"
   - "WebFetch(domain:haproxy.com)"
   - "WebFetch(domain:haproxy.com/documentation)"
   - "WebFetch(domain:harness.io)"
@@ -1849,11 +2042,14 @@ allow:
   - "WebFetch(domain:zod.dev)"
   - "WebFetch(domain:zoom.us)"
   - "WebFetch(domain:zustand-demo.pmnd.rs)"
-  # Blanket tool allows — deny list still blocks dangerous commands
-  - "Bash"
+  # Read is allow-listed broadly so agents can inspect any file in the project,
+  # including dotfiles and config. Credential paths (~/.ssh, ~/.aws/credentials,
+  # ~/.config/gcloud, ~/.netrc, ~/.pgpass, ~/.docker/config.json, ~/.npmrc) are
+  # explicitly denied in 99-deny.yaml.
   - "Read"
 
-  # File system paths (Write/Edit)
+  # Write/Edit is scoped: scratch space + the agents-cli config dirs.
+  # Project-level edits (cwd) require explicit user approval.
   - "Write(/tmp/*)"
   - "Write(/tmp/**)"
   - "Edit(/tmp/*)"
@@ -1863,28 +2059,66 @@ allow:
   - "Write(~/.claude/**)"
   - "Edit(~/.claude/*)"
   - "Edit(~/.claude/**)"
-  - "Write(~/.rush/*)"
-  - "Write(~/.rush/**)"
-  - "Edit(~/.rush/*)"
-  - "Edit(~/.rush/**)"
   - "Write(~/.agents/*)"
   - "Write(~/.agents/**)"
   - "Edit(~/.agents/*)"
   - "Edit(~/.agents/**)"
 deny:
-  - "Bash(find:*)"
-  - "Bash(sudo:*)"
-  - "Bash(wget:*)"
-  - "Bash(timeout:*)"
+  # Sandbox-only deny list. Applied when AGENTS_PERMISSION_PRESET=sandbox.
+  #
+  # Philosophy: the pod is ephemeral and non-root. Only block operations whose
+  # blast radius escapes the pod (remote git state, credentials that unlock
+  # external systems). Everything else — find, sudo, wget, local git ops —
+  # is allowed, because a destructive local command just destroys scratch state.
+
+  # Remote blast radius — affects the shared git remote
+  - "Bash(git push --force:*)"
+  - "Bash(git push -f:*)"
+  - "Bash(git filter-branch:*)"
+
+  # Credentials — unlock remote systems even from a dead pod
   - "Read(~/.ssh/**)"
   - "Edit(~/.ssh/**)"
+  - "Read(~/.codex/auth.json)"
+  - "Edit(~/.codex/auth.json)"
+  - "Read(~/.claude/*.json)"
+  - "Edit(~/.claude/*.json)"
+deny:
+  - "Bash(sudo:*)"
+  - "Bash(timeout:*)"
+
+  # Credential files — never allow agents to read or write these.
+  - "Read(~/.ssh/**)"
+  - "Edit(~/.ssh/**)"
+  - "Write(~/.ssh/**)"
+  - "Read(~/.aws/credentials)"
+  - "Edit(~/.aws/credentials)"
+  - "Write(~/.aws/credentials)"
+  - "Read(~/.aws/config)"
+  - "Edit(~/.aws/config)"
+  - "Read(~/.config/gcloud/**)"
+  - "Edit(~/.config/gcloud/**)"
+  - "Write(~/.config/gcloud/**)"
+  - "Read(~/.config/op/**)"
+  - "Edit(~/.config/op/**)"
+  - "Read(~/.netrc)"
+  - "Edit(~/.netrc)"
+  - "Write(~/.netrc)"
+  - "Read(~/.pgpass)"
+  - "Edit(~/.pgpass)"
+  - "Write(~/.pgpass)"
+  - "Read(~/.docker/config.json)"
+  - "Edit(~/.docker/config.json)"
+  - "Read(~/.npmrc)"
+  - "Edit(~/.npmrc)"
+  - "Read(~/.kube/config)"
+  - "Edit(~/.kube/config)"
 
   # Git - dangerous commands that rewrite history or lose work.
   # `git push --force` is blocked; `--force-with-lease` is permitted because
   # it refuses to overwrite if the remote has advanced.
   - "Bash(git reset:*)"
-  - "Bash(git push --force origin:*)"
-  - "Bash(git push --force upstream:*)"
+  - "Bash(git push --force:*)"
   - "Bash(git push -f:*)"
   - "Bash(git clean:*)"
   - "Bash(git checkout:*)"

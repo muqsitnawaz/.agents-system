@@ -54,12 +54,7 @@ These run in your current session, with optional team augmentation for complex s
 - `/continue` - Resume a previous task with context recovery
 - `/commit` - Stage all changes, write a conventional commit message, and push in the background
 
-**Media**
-- `/image` - Generate images via the image-craft skill
-
 **Utilities**
-- `/mq` - Query large markdown, HTML, and PDF docs without reading entire files. Probe structure first, extract surgically.
-- `/reflect` - Recall feedback, corrections, and constraints from the current conversation before iterating. Prevents drift.
 - `/secrets` - Manage named bundles of environment variables backed by macOS Keychain. Create bundles, add secrets, inject into runs.
 - `/sessions` - Search, browse, and read agent conversation transcripts across Claude, Codex, Gemini, and OpenCode.
 - `/teams` - Arrange agents into teams for parallel execution. Create, add members, start, monitor, and collect results.

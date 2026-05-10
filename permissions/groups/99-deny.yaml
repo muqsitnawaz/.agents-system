@@ -1,10 +1,33 @@
 deny:
-  - "Bash(find:*)"
   - "Bash(sudo:*)"
-  - "Bash(wget:*)"
   - "Bash(timeout:*)"
+
+  # Credential files — never allow agents to read or write these.
   - "Read(~/.ssh/**)"
   - "Edit(~/.ssh/**)"
+  - "Write(~/.ssh/**)"
+  - "Read(~/.aws/credentials)"
+  - "Edit(~/.aws/credentials)"
+  - "Write(~/.aws/credentials)"
+  - "Read(~/.aws/config)"
+  - "Edit(~/.aws/config)"
+  - "Read(~/.config/gcloud/**)"
+  - "Edit(~/.config/gcloud/**)"
+  - "Write(~/.config/gcloud/**)"
+  - "Read(~/.config/op/**)"
+  - "Edit(~/.config/op/**)"
+  - "Read(~/.netrc)"
+  - "Edit(~/.netrc)"
+  - "Write(~/.netrc)"
+  - "Read(~/.pgpass)"
+  - "Edit(~/.pgpass)"
+  - "Write(~/.pgpass)"
+  - "Read(~/.docker/config.json)"
+  - "Edit(~/.docker/config.json)"
+  - "Read(~/.npmrc)"
+  - "Edit(~/.npmrc)"
+  - "Read(~/.kube/config)"
+  - "Edit(~/.kube/config)"
 
   # Git - dangerous commands that rewrite history or lose work.
   # `git push --force` is blocked; `--force-with-lease` is permitted because

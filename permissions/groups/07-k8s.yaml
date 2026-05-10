@@ -1,1 +1,6 @@
-  # Covered by blanket "Bash" in 30-paths.yaml
+  # Kubernetes / Helm.
+  - "Bash(kubectl:*)"
+  - "Bash(kustomize:*)"
+  - "Bash(helm:*)"
+  - "Bash(k9s:*)"
+  - "Bash(stern:*)"

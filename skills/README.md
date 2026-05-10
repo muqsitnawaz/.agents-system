@@ -94,34 +94,14 @@ The environment injection pattern solves (1) and (2). For (3), document dependen
 
 Each subdirectory is a self-contained skill with its own `SKILL.md`. Invoke with `/skill-name` or let the agent auto-detect from context.
 
-### Content & Creative
-
-| Skill | What It Does |
-|-------|-------------|
-| `design/` | UX and interface design — from first principles to final specification. Handles new designs (via browser-based design tools) and existing design improvements (via ASCII mockups and design.md files). |
-| `image-craft/` | Expert prompt engineering for image generation across styles: editorial photography, logos, posters, product shots, illustrations. |
-| `memician/` | Create culturally resonant memes and viral social content. Compresses cultural tensions into minimal words. |
-
-### Productivity & Ops
-
-| Skill | What It Does |
-|-------|-------------|
-| `browser/` | Drive a browser to automate websites — defaults to OpenClaw with per-agent profile isolation. Falls back to CDP, browser-harness, or agent-browser. |
-| `browser-generate/` | Generate images, videos, or other content via browser-based platforms without APIs (Higgsfield, Panic, etc.). |
-| `mq/` | Query large markdown, HTML, and PDF files without reading entire documents. Probe structure first, extract surgically. |
-| `reflect/` | Recall feedback, corrections, and constraints from the current conversation before iterating. |
-| `sessions/` | Search, browse, and read agent conversation transcripts across Claude, Codex, Gemini, and OpenCode. |
-| `teams/` | Organize AI coding agents into teams for parallel collaboration. Create, add, start, monitor, and collect results. |
-| `secrets/` | Manage named bundles of environment variables backed by macOS Keychain. Create bundles, add secrets, inject into runs. |
-
-### Agent Infrastructure
-
 | Skill | What It Does |
 |-------|-------------|
 | `agents-cli/` | Manage AI coding agent CLIs. Install versions, sync configs, switch between agents, manage MCP servers. |
+| `browser/` | Drive a browser to automate websites — uses the built-in `agents browser` command with per-agent profile isolation over CDP. |
 | `mcporter/` | MCP server CLI for managing Model Context Protocol servers. |
+| `teams/` | Organize AI coding agents into teams for parallel collaboration. Create, add, start, monitor, and collect results. |
 
-||## Further Reading
+## Further Reading
 
 - [Claude Code Skills Documentation](https://code.claude.com/docs/en/skills)
 - [Essential Claude Code Skills and Commands](https://batsov.com/articles/2026/03/11/essential-claude-code-skills-and-commands/)

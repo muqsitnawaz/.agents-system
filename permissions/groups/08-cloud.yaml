@@ -1,1 +1,16 @@
-  # Covered by blanket "Bash" in 30-paths.yaml
+  # Cloud provider CLIs.
+  - "Bash(aws:*)"
+  - "Bash(gcloud:*)"
+  - "Bash(az:*)"
+  - "Bash(doctl:*)"
+  - "Bash(fly:*)"
+  - "Bash(flyctl:*)"
+  - "Bash(vercel:*)"
+  - "Bash(netlify:*)"
+  - "Bash(supabase:*)"
+  - "Bash(wrangler:*)"
+  - "Bash(railway:*)"
+  - "Bash(render:*)"
+  - "Bash(heroku:*)"
+  - "Bash(terraform:*)"
+  - "Bash(pulumi:*)"

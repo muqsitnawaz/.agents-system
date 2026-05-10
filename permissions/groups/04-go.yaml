@@ -1,1 +1,6 @@
-  # Covered by blanket "Bash" in 30-paths.yaml
+  # Go toolchain.
+  - "Bash(go:*)"
+  - "Bash(gofmt:*)"
+  - "Bash(goimports:*)"
+  - "Bash(golangci-lint:*)"
+  - "Bash(staticcheck:*)"

@@ -14,7 +14,7 @@ permissions/
   CLAUDE.md         # symlink -> AGENTS.md
   GEMINI.md         # symlink -> AGENTS.md
   groups/           # ordered YAML fragments (01-core.yaml, 09-git.yaml, ...)
-  sets/             # named bundles that include a list of groups
+  presets/          # named bundles that include a list of groups
   build.sh          # concatenates groups -> default.yaml
   default.yaml      # AUTO-GENERATED; do not edit by hand
 ```
@@ -25,9 +25,9 @@ permissions/
 2. Run `./build.sh` to regenerate `default.yaml`.
 3. `agents permissions add` (or `agents pull`) installs it.
 
-## Sets
+## Presets
 
-`sets/<name>.yaml` defines a named permission bundle as a list of group includes. `default` is the laptop-strict bundle; `sandbox` is for sandboxed execution. Pick a set when registering: `agents permissions add --set sandbox`.
+`presets/<name>.yaml` defines a named permission bundle as a list of group includes. `default` is the laptop-strict bundle; `sandbox` is for sandboxed execution. Pick a preset at sync time via `AGENTS_PERMISSION_PRESET=sandbox` (matches the `presets/` convention used by `rules/presets/`).
 
 ## Local-only rules
 
