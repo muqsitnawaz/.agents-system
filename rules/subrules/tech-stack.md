@@ -8,6 +8,7 @@
 | Issue tracker (auto-detect) | `/issues` command | Generic ticket operations across Linear/GitHub/Jira; auto-detects whichever CLI/skill is available. |
 | Browser automation | `browser` skill | Driving websites, filling forms, taking screenshots. (`browser` is shorthand for `agents browser`). |
 | Interactive terminal programs | `agents pty` | REPLs, TUIs, interactive CLIs needing a real PTY. |
+| Parallel coding agents | `agents teams` | Multi-surface implementation work. |
 | Credentials | `agents secrets` | All auth tokens, API keys. Never env vars or plaintext. |
 
 ## Interactive terminal (`agents pty`)
@@ -25,8 +26,9 @@ agents pty stop $SID
 ## agents-cli conventions
 
 - **Agent config is symlinked, not native:** `~/.claude/`, `~/.codex/`, and similar home directories are symlinks managed by agents-cli into `~/.agents/versions/{agent}/{version}/home/`. The real source of truth for shared config (commands, skills, hooks, memory, MCP) is `~/.agents/`.
-- **Use `agents sessions` to recall prior work.** Before starting a task, search sessions by topic or repo to see if another agent already worked on it.
+- **Use `agents sessions` to recall prior work.** Before starting a task, search sessions by topic or repo to see if another agent already worked on it. Use `--include`/`--exclude` to pull specific roles (user messages, thinking, tool calls).
 - **Check active agents before spawning.** `agents sessions --active` shows every agent running right now.
+- **Single-agent dispatch:** use `agents run`. When spawning any agent, include specific file paths with line numbers, code patterns inline, and concrete examples of expected output.
 
 ## LLM tool design
 
