@@ -6,9 +6,8 @@
 | --- | --- | --- |
 | Query large docs (.md, .html, .pdf) | `mq` | File is 100+ lines. Probe structure first, extract surgically. |
 | Issue tracker (auto-detect) | `/issues` command | Generic ticket operations across Linear/GitHub/Jira; auto-detects whichever CLI/skill is available. |
-| Browser automation | `browser` skill | Driving websites, filling forms, taking screenshots. Part of `agents-cli` (`browser` is shorthand for `agents browser`). |
+| Browser automation | `browser` skill | Driving websites, filling forms, taking screenshots. (`browser` is shorthand for `agents browser`). |
 | Interactive terminal programs | `agents pty` | REPLs, TUIs, interactive CLIs needing a real PTY. |
-| Parallel coding agents | `agents teams` | Multi-surface implementation work. |
 | Credentials | `agents secrets` | All auth tokens, API keys. Never env vars or plaintext. |
 
 ## Interactive terminal (`agents pty`)
@@ -23,15 +22,11 @@ agents pty write $SID "exit()\n"
 agents pty stop $SID
 ```
 
-Run `agents pty --help` for full usage.
+## agents-cli conventions
 
-## Agent spawning
-
-For parallel work, use `agents teams` (see `parallel-teams.md`). For single-agent dispatch, use `agents run`. When spawning, include:
-
-- Specific file paths with line numbers.
-- Code patterns inline (not vague instructions).
-- Concrete examples of the expected output.
+- **Agent config is symlinked, not native:** `~/.claude/`, `~/.codex/`, and similar home directories are symlinks managed by agents-cli into `~/.agents/versions/{agent}/{version}/home/`. The real source of truth for shared config (commands, skills, hooks, memory, MCP) is `~/.agents/`.
+- **Use `agents sessions` to recall prior work.** Before starting a task, search sessions by topic or repo to see if another agent already worked on it.
+- **Check active agents before spawning.** `agents sessions --active` shows every agent running right now.
 
 ## LLM tool design
 
